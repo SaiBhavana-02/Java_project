@@ -1,0 +1,38 @@
+package com.pace.springboot.controller;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import com.pace.springboot.model.Flight;
+import com.pace.springboot.service.FlightService;
+
+@RestController
+@RequestMapping("api/flights")
+public class FlightController {
+	@AutoWired
+	FlightService flightService;
+	
+	private List<Flight> getAllFlights(){
+		return flightService.getAllFlights();
+	}
+	
+	private Long saveFlight(Flight flight) {
+		flightService.saveFlight(flight);
+		return flight.getId();
+	}
+	
+	private Flight getFlights(("id") long id) {
+		return flightService.getFlightById(id);
+	}
+	
+	private Flight update(Flight flight) {
+		flightService.updateFlight(flight);
+	}
+	
+	private void deleteFlight(("id") long id) {
+		flightService.deleteFlight(id);
+	}
+}
